@@ -1,10 +1,13 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
-#include <Adafruit_SH1106.h>
+#include <Adafruit_SSD1306.h>
 
 // -------------------- OLED Configuration --------------------
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
 #define OLED_RESET -1
-Adafruit_SH1106 display(OLED_RESET);
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 // -------------------- Pins --------------------
 const int ENCA = 3;   // Encoder A (interrupt-capable)
@@ -30,8 +33,11 @@ void setup() {
 
   attachInterrupt(digitalPinToInterrupt(ENCA), readEncoder, RISING);
 
-  // OLED setup
-  display.begin(SH1106_SWITCHCAPVCC, 0x3C);
+  // --- OLED SETUP ---
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+    for (;;);  // Hang if OLED not found
+  }
+
   display.clearDisplay();
   display.setTextSize(2);
   display.setTextColor(WHITE);
@@ -62,3 +68,4 @@ void loop() {
   display.display();
   delay(200);
 }
+

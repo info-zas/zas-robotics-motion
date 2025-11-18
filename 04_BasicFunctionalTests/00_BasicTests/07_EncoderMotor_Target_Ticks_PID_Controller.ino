@@ -1,10 +1,13 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
-#include <Adafruit_SH1106.h>
+#include <Adafruit_SSD1306.h>
 
 // -------------------- OLED Configuration --------------------
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
 #define OLED_RESET -1
-Adafruit_SH1106 display(OLED_RESET);
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 // -------------------- Motor Driver Pins --------------------
 const int PWMA = 5;
@@ -44,7 +47,11 @@ void setup() {
   pinMode(ENCA, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(ENCA), readEncoder, RISING);
 
-  display.begin(SH1106_SWITCHCAPVCC, 0x3C);
+  // --- OLED setup ---
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+    for (;;);  // hang if OLED not found
+  }
+
   display.clearDisplay();
   display.setTextSize(2);
   display.setTextColor(WHITE);
@@ -61,11 +68,12 @@ void loop() {
 
   long error = targetTicks - ticks;
   long tolerance = targetTicks * 0.005;
+  
 
   unsigned long now = millis();
   float deltaTime = (now - lastTime) / 1000.0;  // seconds
 
-  // Stop when within 5% tolerance
+  // Stop when within tolerance
   if (abs(error) <= tolerance) {
     if (!motorStopped) {
       analogWrite(PWMA, 0);
@@ -83,7 +91,7 @@ void loop() {
     int pwm = abs(output);
     pwm = constrain(pwm, minPWM, maxPWM);
 
-    // Set direction CW only (you can add CCW logic later)
+    // Set direction CW
     digitalWrite(AIN1, HIGH);
     digitalWrite(AIN2, LOW);
     analogWrite(PWMA, pwm);
@@ -93,7 +101,7 @@ void loop() {
     motorStopped = false;
   }
 
-  // Display
+  // -------------------- OLED DISPLAY --------------------
   display.clearDisplay();
   display.setCursor(0, 0);
   display.print("Ticks:");
@@ -103,7 +111,8 @@ void loop() {
   display.setCursor(0, 45);
   display.print("Err:");
   display.println(error);
+
   display.display();
 
-  delay(100);  // 100 ms refresh rate
+  delay(100);
 }

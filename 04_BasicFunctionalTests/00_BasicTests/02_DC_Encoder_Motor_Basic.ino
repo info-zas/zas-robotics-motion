@@ -1,5 +1,5 @@
 void setup() { 
-  pinMode(5, OUTPUT);  // Enable pin (PWM speed control)
+  pinMode(5, OUTPUT);  // PWM speed control
   pinMode(6, OUTPUT);  // Direction pin 1
   pinMode(4, OUTPUT);  // Direction pin 2
 }

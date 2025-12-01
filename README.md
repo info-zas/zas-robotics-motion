@@ -1,11 +1,10 @@
-![ZAS Robotics Motion Actuator Kit](01_FoundationProjects/ZASRoboticsIOTCommunicationKit.png)
+# ZAS Robotics Motion – Actuator Kit
 
-
-
+![ZAS Robotics Motion Actuator Kit](01_FoundationProjects/ZASRoboticsMotionActuatorKit.png)
 
 ## About This Repository
-
-This folder contains the **Foundation Projects** for the ZAS Robotics Motion (Actuator) Kit.  
+This folder contains the **Foundation Projects** for the ZAS Robotics Motion (Actuator) Kit.
+  
 Included topics:
 
 - DC Motor Control  

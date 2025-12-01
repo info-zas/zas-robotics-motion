@@ -1,6 +1,3 @@
-
-# ZAS Robotics Motion – Actuator Kit
-
 ![ZAS Robotics Motion Actuator Kit](ZASRoboticsMotionActuatorKit.png)
 
 
@@ -24,4 +21,4 @@ Compatible with:
 - ZAS Motion Actuator Board  
 - Beginner-friendly experiments with step-by-step guidance
 
-Learn motion, build robots, and explore automation! 🚀
+Learn motion, build robots, and explore automation!

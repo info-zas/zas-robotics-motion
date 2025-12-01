@@ -1,6 +1,6 @@
 # ZAS Robotics Motion – Actuator Kit
 
-![ZAS Robotics Motion Actuator Kit](01_FoundationProjects/ZASRoboticsMotionActuatorKit.png)
+![ZAS Robotics Motion Actuator Kit](01_FoundationProjects/ZASRoboticsMotionActuatorKit_updated.png)
 
 ## About This Repository
 

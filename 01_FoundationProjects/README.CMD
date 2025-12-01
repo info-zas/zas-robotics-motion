@@ -1,11 +1,11 @@
 
 # ZAS Robotics Motion – Actuator Kit
 
-![ZAS Robotics Motion Actuator Kit](./ZASRoboticsMotionActuatorKit.png)
+![ZAS Robotics Motion Actuator Kit](ZASRoboticsMotionActuatorKit.png)
 
 
 # Motion Learning Journey  
-![Motion Learning Journey](./ZASRoboticsMotionLearningJourney.png)
+![Motion Learning Journey](ZASRoboticsMotionLearningJourney.png)
 
 ## About This Repository
 
